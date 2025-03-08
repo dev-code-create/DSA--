@@ -13,9 +13,12 @@ string longestCommonPrefixBrute(vector<string> strs)
     for (int j = 1; j < strs.size(); j++)
     {
       if (i >= strs[j].size() || strs[j][i] != ch)
+      {
         return strs[0].substr(0, i);
+      }
     }
   }
+  return strs[0];
 }
 int main()
 {
