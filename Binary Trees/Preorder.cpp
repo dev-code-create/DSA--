@@ -31,13 +31,30 @@ Node *buildTree(vector<int> preorder)
   root->right = buildTree(preorder);
   return root;
 }
+
+void preOrder(Node *root)
+{
+  if (root == NULL)
+  {
+    return;
+  }
+
+  cout << root->data << " ";
+  preOrder(root->left);
+  preOrder(root->right);
+}
+
 int main()
 {
-
-  vector<int> preorder = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+  // Example tree: 1
+  //              / \
+  //             2   3
+  //            /   / \
+  //           4   5   6
+  // Preorder with -1 as NULL: 1 2 4 -1 -1 -1 3 5 -1 -1 6 -1 -1
+  vector<int> preorder = {1, 2, 4, -1, -1, -1, 3, 5, -1, -1, 6, -1, -1};
   Node *root = buildTree(preorder);
-  cout << root->data << endl;
-  cout << root->left->data << endl;
-  cout << root->left->left->data << endl;
+  preOrder(root);
+  cout << endl;
   return 0;
 }
