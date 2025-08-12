@@ -8,7 +8,12 @@ vector<int> twoSum(vector<int> &nums, int target)
   {
     int complement = target - nums[i];
     if (mp.find(complement) != mp.end())
+    {
+      return {mp[complement], i};
+    }
+    mp[nums[i]] = i;
   }
+  return {}; // return empty vector if no solution found
 }
 
 int main()
