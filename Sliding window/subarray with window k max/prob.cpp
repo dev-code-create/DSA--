@@ -5,7 +5,7 @@ int maxSum_slidingWindow(vector<int> &arr, int k)
 {
   int n = arr.size();
   if (n < k)
-    return -1; // invalid casee
+    return -1; // invalid caseee
 
   int windowSum = 0;
   for (int i = 0; i < k; i++)
