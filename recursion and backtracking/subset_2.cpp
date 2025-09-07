@@ -1,10 +1,13 @@
+#include <vector>
+#include <algorithm>
+
 class Solution
 {
 public:
-  vector<vector<int>> res;
-  vector<int> subset;
+  std::vector<std::vector<int>> res;
+  std::vector<int> subset;
 
-  void backtrack(vector<int> &nums, int index)
+  void backtrack(std::vector<int> &nums, int index)
   {
     res.push_back(subset);
 
@@ -20,9 +23,9 @@ public:
     }
   }
 
-  vector<vector<int>> subsetsWithDup(vector<int> &nums)
+  std::vector<std::vector<int>> subsetsWithDup(std::vector<int> &nums)
   {
-    sort(nums.begin(), nums.end()); // sort first to handle duplicates
+    std::sort(nums.begin(), nums.end()); // sort first to handle duplicates
     backtrack(nums, 0);
     return res;
   }
