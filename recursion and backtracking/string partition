@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+  vector<vector<string>> res;
+  vector<string> path;
+
+  bool isPalindrome(string &s, int l, int r)
+  {
+    while (l < r)
+    {
+      if (s[l] != s[r])
+        return false;
+      l++;
+      r--;
+    }
+    return true;
+  }
+
+  void backtrack(string &s, int start)
+  {
+    if (start == s.size())
+    {
+      res.push_back(path);
+      return;
+    }
+
+    for (int i = start; i < s.size(); i++)
+    {
+      if (isPalindrome(s, start, i))
+      {
+        // choose substring
+        path.push_back(s.substr(start, i - start + 1));
+        backtrack(s, i + 1);
+        path.pop_back(); // backtrack
+      }
+    }
+  }
+
+  vector<vector<string>> partition(string s)
+  {
+    backtrack(s, 0);
+    return res;
+  }
+};
