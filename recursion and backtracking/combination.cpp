@@ -1,10 +1,10 @@
+#include <vector>
+
 class Solution
 {
 public:
-  vector<vector<int>> res;
-  vector<int> combination;
-
-  void backtrack(vector<int> &candidates, int target, int index)
+  std::vector<std::vector<int>> res;
+  void backtrack(std::vector<int> &candidates, int target, int index, std::vector<int> &combination)
   {
     // Base case: found valid combination
     if (target == 0)
@@ -18,16 +18,17 @@ public:
 
     // Include current number
     combination.push_back(candidates[index]);
-    backtrack(candidates, target - candidates[index], index); // stay at same index (reuse allowed)
+    backtrack(candidates, target - candidates[index], index, combination); // stay at same index (reuse allowed)
     combination.pop_back();
 
     // Exclude current number
-    backtrack(candidates, target, index + 1);
+    backtrack(candidates, target, index + 1, combination);
   }
 
-  vector<vector<int>> combinationSum(vector<int> &candidates, int target)
+  std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target)
   {
-    backtrack(candidates, target, 0);
+    std::vector<int> combination;
+    backtrack(candidates, target, 0, combination);
     return res;
   }
 };
